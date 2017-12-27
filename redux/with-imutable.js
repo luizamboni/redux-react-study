@@ -1,13 +1,15 @@
 "use strict"
 
 const { createStore }  = require("redux")
+const { List } = require('immutable')
 
 
-function todo(state = [], action) {
+function todo(_state = [], action) {
+  const state = (_state.length === 0)? List(_state) : _state
+
   switch (action.type) {
     case "ADD":
-      state.push({ text: action.text })
-      return state
+      return state.push({ text: action.text })
     default:
       return state
   }
