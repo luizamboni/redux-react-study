@@ -8,6 +8,7 @@ const todo = (state = [], action) => {
 
   switch (action.type) {
     case "ADD":
+      console.log("ADD in todo")
       return [ ...state, { text: action.text } ]
     default:
       return state
@@ -22,6 +23,7 @@ const count = (state = 0, action) => {
     case "DECREMENT":
       return --state
     case "ADD":
+      console.log("ADD in count")
       return ++state
 
     default:
@@ -29,7 +31,7 @@ const count = (state = 0, action) => {
   }
 }
 
-const conbinedRedux = combineReducers({ count, todo })
+const conbinedRedux = combineReducers({ todo, count})
 
 
 let store = createStore(conbinedRedux)
